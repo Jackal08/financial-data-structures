@@ -1,0 +1,4 @@
+# Required Libraries
+numpy==1.14.2
+pandas==0.22.0
+Cython==0.28.2

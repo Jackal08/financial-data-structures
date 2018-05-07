@@ -12,7 +12,7 @@ Version of Python: 3.6.5
 
 ## Description
 
-This program is to help users create structured financial data in the form of time, tick, volume, and dollar bars from unstructured tick data.
+This program is to help users create structured financial data from unstructured data, in the form of time, tick, volume, and dollar bars.
 
 The user passes tick data to the create_bars(data, units=1000, type='tick') function and it returns the desired structured data.
 Everything can be found in the main.py file. I left lots of comments in the code. 

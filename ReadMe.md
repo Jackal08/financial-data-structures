@@ -1,8 +1,6 @@
-Author: Jacques Francois Joubert
-
-Email: jacques@quantsportal.com
-
-Date: 7 May 2018 
+- Author: Jacques Francois Joubert
+- Email: jacques@quantsportal.com
+- Date: 7 May 2018 
 
 # Create Financial Data Structures: Time, Tick, Volume, and Dollar Bars
 
@@ -24,6 +22,55 @@ A great paper to read more about how the tick, volume, and dollar bars have bett
 [The Volume Clock: Insights into the high frequency paradigm, Lopez de Prado, et al](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2034858)
 
 Note: Please make sure you unzip the ES_Trades.csv.zip found in raw_tick_data, it was too big to upload without zipping it first.
+
+## Why Using Different Sampling Techniques is Cool!
+The whole motivation behind sampling data differently to the traditional fixed time intervals, is that alternative methods offer better statistical properties.
+
+The following is from de Prado's text book:
+
+Fixed time interval sampling should be avoided for 2 reasons: 
+1. Markets don't process information at fixed time intervals, time bars oversample during quiet periods and undersample during busy periods.
+2. Time sampled bars often exhibit poor statistical properties:
+    - Serial Correlation
+    - Heteroscedasticity
+    - Non Normality of Returns
+
+[Mandlebrot and Taylor [1967]](https://www.jstor.org/stable/168611?seq=1#page_scan_tab_contents) were among the first to realize that sampling as a function of the number of transactions exhibited desirable statistical properties.
+Multiple studies have confirmed that sampling as a function of trading activity allows us to achieve returns closer to IID Normal [Ane and Geman [2000]](https://www.jstor.org/stable/222489)
+
+This is important because many statistical methods rely on the assumption that observations are drawn from an IID Gaussian process.
+
+In the paper titled 'The Volume Clock' you will see the authors show standardized distributions of fixed time intervals and volume bars.
+Notice how the volume bars have a lower kurtosis. If you check the notebook you will see that the test statistics from the Jarque-Bera normality tests are much
+lower for non fixed time bars. 
+
+![small_sample](images/VolumeBars.png "Distributions on large sample set")
+
+The code provided in this repo is some of the only code that de Prado doesn't offer in his text book and I thought that the community would find it useful
+to have a repo from which they can access the code needed to build time, tick, volume, and dollar bars.
+
+To show that the code is correct, I downloaded a small sample and plotted the same distribution.
+20 days of tick data, E-mini S&P500 futures, 1 Sep 2013 to 20 Sep 2013.
+(Sourced from Tick Data LLC: https://s3-us-west-2.amazonaws.com/tick-data-s3/downloads/ES_Sample.zip)
+
+![small_sample](images/MySample.png "Distributions on small sample set")
+
+As you can see from the results, the alternative bar types provide better statistical properties. A deeper dive can be found in the notebooks.
+
+## Data Analysis Jupyter Notebook
+The following data analysis is performed on the series of E-mini S&P 500 futures tick data:
+
+1. Form tick, volume, and dollar bars
+2. Count the number of bars produced by tick, volume, and dollar bars on a weekly basis.
+Plot a time seiries of that bar count. What bar type produces the most stable weekly count? Why?
+3. Compute serieal correlation of returns for the three bar types. What bar method has the lowest serial correlation?
+4. Apply the Jarque-Bera normality test on returns from the three bar types. What method achieves the lowest test statistic?
+5. Standardize & Plot the Distributions
+
+Notes:
+- dir: jupyter_notebooks
+- This Jupyter Notebook is labeled as DataAnalysis.ipynb
+- Accompanying html file for ease of use 
 
 ## Installation Windows
 

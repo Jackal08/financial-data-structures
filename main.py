@@ -134,6 +134,7 @@ def create_bars(data, units=1000, type='tick'):
     # Create an empty column
     data['Group'] = np.nan
 
+    print('Creating {type} bars'.format(type=type))
     if type == 'tick':
         bars = __tick_bars(data, units)
     elif type == 'volume':
@@ -143,7 +144,7 @@ def create_bars(data, units=1000, type='tick'):
     elif type == 'time':
         bars = __time_bars(data, units)
     else:
-        raise ValueError('Type must be: tick, volume, or dollar')
+        raise ValueError('Type must be: tick, volume, dollar, or time')
 
     return bars
 

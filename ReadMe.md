@@ -15,7 +15,7 @@ This program is to help users create structured financial data from unstructured
 The user passes tick data to the create_bars(data, units=1000, type='tick') function and it returns the desired structured data.
 Everything can be found in the main.py file. I left lots of comments in the code. 
 
-These bars are used throughout the text book (*Advances in Financial Machine Learning, By Marcos Lopex de Prado, 2018, pg 25*)
+These bars are used throughout the text book (*Advances in Financial Machine Learning, By Marcos Lopez de Prado, 2018, pg 25*)
 to build the more interesting features for predicting financial time series data.
 
 A great paper to read more about how the tick, volume, and dollar bars have better statistical properties to standard time sampled data is:

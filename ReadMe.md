@@ -72,11 +72,6 @@ Notes:
 - This Jupyter Notebook is labeled as DataAnalysis.ipynb
 - Accompanying html file for ease of use 
 
-## Installation Windows
-
-Ha-Ha be serious, Quants don't use windows. You can download a real operating system here: https://www.ubuntu.com/download/desktop
-You can also buy a real computer here: https://www.apple.com/shop/buy-mac/macbook-pro
-
 ## Installation on Mac OS X
 
 Make sure you install the latest version of the Anaconda 3 distribution which must include an IDE like Spyder.

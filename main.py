@@ -163,7 +163,7 @@ if __name__ == '__main__':
     dollar_bars = create_bars(data, units=35638840, type='dollar')
 
     # Write to csv
-    time_bars.to_csv('saved_data/time_bars.csv', index=False)
+    # time_bars.to_csv('saved_data/time_bars.csv', index=False)
     tick_bars.to_csv('saved_data/tick_bars.csv', index=False)
     volume_bars.to_csv('saved_data/volume_bars.csv', index=False)
     dollar_bars.to_csv('saved_data/dollar_bars.csv', index=False)

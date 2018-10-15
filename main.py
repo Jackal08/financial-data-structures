@@ -157,7 +157,7 @@ if __name__ == '__main__':
     data = pd.read_csv('raw_tick_data/ES_Trades.csv')
 
     # Create bars
-    time_bars = create_bars(data, units=1, type='time')
+    # time_bars = create_bars(data, units=600, type='time')  # Time bars take long to run since I have not optimised them.
     tick_bars = create_bars(data, units=5000, type='tick')
     volume_bars = create_bars(data, units=21731, type='volume')
     dollar_bars = create_bars(data, units=35638840, type='dollar')

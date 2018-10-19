@@ -102,6 +102,23 @@ From Terminal:
 2. pip install -r pip_requirements.txt
 3. Run the file: main.py (python main.py)
 
+## Installation on Windows
+
+A collegue of mine (Guillermo Izquierdo Colin) suggested the following for Windows users:
+You can always use a virtualbox machine on Windows.
+
+1. https://www.virtualbox.org/
+2. Install an image of an Ubuntu or MacOS distribution
+3. Install Anaconda3
+4. Install Git
+5. Clone repository
+6. Build C packages, "python setup.py  build_ext --inplace"
+7. and run the main.py  file.
+
+The reason for this is because Windows doesn't lend itself well to python and cython. You need to wrestle a bear and then crawl on broken glass whilst humming Mozart's piano sonata no 13 in B flat major. Honestly, just install Linux. 
+
+The following link is more useful for those pursuing the heroes journey: [How to deal with the pain of “unable to find vcvarsall.bat”](https://blogs.msdn.microsoft.com/pythonengineering/2016/04/11/unable-to-find-vcvarsall-bat/)
+
 ## Packages Used
 Packages can all be installed by running the following command in the terminal (project working directory): "pip install -r pip_requirements.txt" 
 * numpy==1.14.2

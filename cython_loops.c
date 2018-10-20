@@ -1030,16 +1030,18 @@ static PyObject *__pyx_tuple_;
 static PyObject *__pyx_codeobj__2;
 /* Late includes */
 
-/* "cython_loops.pyx":2
+/* "cython_loops.pyx":8
+ * # Terminal: python setup.py build_ext --inplace
  * 
  * def set_row_groups(int units, data):             # <<<<<<<<<<<<<<
- * 
- *     cdef long threshold = units
+ *     """
+ *     Used to set the groups for the Volume and Dollar bars.
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_12cython_loops_1set_row_groups(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_12cython_loops_1set_row_groups = {"set_row_groups", (PyCFunction)__pyx_pw_12cython_loops_1set_row_groups, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_12cython_loops_set_row_groups[] = "\n    Used to set the groups for the Volume and Dollar bars.\n\n    :param units: Number of units before a bar is created. For dollar\n    bars this means the transaction size, for volume bars it means total\n    volume processed before a new bar is created.\n    :param data: numpy ndarray, represents the tick data\n    :return: tick data with relevant groups\n    ";
+static PyMethodDef __pyx_mdef_12cython_loops_1set_row_groups = {"set_row_groups", (PyCFunction)__pyx_pw_12cython_loops_1set_row_groups, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12cython_loops_set_row_groups};
 static PyObject *__pyx_pw_12cython_loops_1set_row_groups(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_units;
   PyObject *__pyx_v_data = 0;
@@ -1069,11 +1071,11 @@ static PyObject *__pyx_pw_12cython_loops_1set_row_groups(PyObject *__pyx_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_data)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_row_groups", 1, 2, 2, 1); __PYX_ERR(0, 2, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_row_groups", 1, 2, 2, 1); __PYX_ERR(0, 8, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_row_groups") < 0)) __PYX_ERR(0, 2, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_row_groups") < 0)) __PYX_ERR(0, 8, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1081,12 +1083,12 @@ static PyObject *__pyx_pw_12cython_loops_1set_row_groups(PyObject *__pyx_self, P
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_units = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_units == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 2, __pyx_L3_error)
+    __pyx_v_units = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_units == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L3_error)
     __pyx_v_data = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_row_groups", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 2, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_row_groups", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 8, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cython_loops.set_row_groups", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1114,8 +1116,8 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
   int __pyx_t_7;
   __Pyx_RefNannySetupContext("set_row_groups", 0);
 
-  /* "cython_loops.pyx":4
- * def set_row_groups(int units, data):
+  /* "cython_loops.pyx":19
+ *     """
  * 
  *     cdef long threshold = units             # <<<<<<<<<<<<<<
  *     cdef int g_count = 0
@@ -1123,7 +1125,7 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
  */
   __pyx_v_threshold = __pyx_v_units;
 
-  /* "cython_loops.pyx":5
+  /* "cython_loops.pyx":20
  * 
  *     cdef long threshold = units
  *     cdef int g_count = 0             # <<<<<<<<<<<<<<
@@ -1132,34 +1134,34 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
  */
   __pyx_v_g_count = 0;
 
-  /* "cython_loops.pyx":8
+  /* "cython_loops.pyx":23
  *     cdef long i
  * 
  *     for i in range(0, data.shape[0]):             # <<<<<<<<<<<<<<
- * 
- *         if data[i, 10] < threshold:
+ *         # If value below threshold then set group
+ *         # else increment group and set
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = __pyx_t_3;
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "cython_loops.pyx":10
- *     for i in range(0, data.shape[0]):
- * 
+    /* "cython_loops.pyx":26
+ *         # If value below threshold then set group
+ *         # else increment group and set
  *         if data[i, 10] < threshold:             # <<<<<<<<<<<<<<
  *             data[i, 9] = g_count
  *         else:
  */
-    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -1167,30 +1169,30 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
     __Pyx_GIVEREF(__pyx_int_10);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_10);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_data, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_data, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_threshold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_threshold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_7) {
 
-      /* "cython_loops.pyx":11
- * 
+      /* "cython_loops.pyx":27
+ *         # else increment group and set
  *         if data[i, 10] < threshold:
  *             data[i, 9] = g_count             # <<<<<<<<<<<<<<
  *         else:
  *             threshold = threshold + units
  */
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_g_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_g_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -1198,13 +1200,13 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
       __Pyx_GIVEREF(__pyx_int_9);
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_int_9);
       __pyx_t_1 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_data, __pyx_t_2, __pyx_t_6) < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_data, __pyx_t_2, __pyx_t_6) < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "cython_loops.pyx":10
- *     for i in range(0, data.shape[0]):
- * 
+      /* "cython_loops.pyx":26
+ *         # If value below threshold then set group
+ *         # else increment group and set
  *         if data[i, 10] < threshold:             # <<<<<<<<<<<<<<
  *             data[i, 9] = g_count
  *         else:
@@ -1212,7 +1214,7 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
       goto __pyx_L5;
     }
 
-    /* "cython_loops.pyx":13
+    /* "cython_loops.pyx":29
  *             data[i, 9] = g_count
  *         else:
  *             threshold = threshold + units             # <<<<<<<<<<<<<<
@@ -1222,7 +1224,7 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
     /*else*/ {
       __pyx_v_threshold = (__pyx_v_threshold + __pyx_v_units);
 
-      /* "cython_loops.pyx":14
+      /* "cython_loops.pyx":30
  *         else:
  *             threshold = threshold + units
  *             g_count += 1             # <<<<<<<<<<<<<<
@@ -1231,18 +1233,18 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
  */
       __pyx_v_g_count = (__pyx_v_g_count + 1);
 
-      /* "cython_loops.pyx":15
+      /* "cython_loops.pyx":31
  *             threshold = threshold + units
  *             g_count += 1
  *             data[i, 9] = g_count             # <<<<<<<<<<<<<<
  * 
  *     return data
  */
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_g_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 15, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_g_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -1250,14 +1252,14 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
       __Pyx_GIVEREF(__pyx_int_9);
       PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_9);
       __pyx_t_2 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_data, __pyx_t_1, __pyx_t_6) < 0)) __PYX_ERR(0, 15, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_data, __pyx_t_1, __pyx_t_6) < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __pyx_L5:;
   }
 
-  /* "cython_loops.pyx":17
+  /* "cython_loops.pyx":33
  *             data[i, 9] = g_count
  * 
  *     return data             # <<<<<<<<<<<<<<
@@ -1267,11 +1269,12 @@ static PyObject *__pyx_pf_12cython_loops_set_row_groups(CYTHON_UNUSED PyObject *
   __pyx_r = __pyx_v_data;
   goto __pyx_L0;
 
-  /* "cython_loops.pyx":2
+  /* "cython_loops.pyx":8
+ * # Terminal: python setup.py build_ext --inplace
  * 
  * def set_row_groups(int units, data):             # <<<<<<<<<<<<<<
- * 
- *     cdef long threshold = units
+ *     """
+ *     Used to set the groups for the Volume and Dollar bars.
  */
 
   /* function exit code */
@@ -1340,7 +1343,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 23, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1350,16 +1353,17 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cython_loops.pyx":2
+  /* "cython_loops.pyx":8
+ * # Terminal: python setup.py build_ext --inplace
  * 
  * def set_row_groups(int units, data):             # <<<<<<<<<<<<<<
- * 
- *     cdef long threshold = units
+ *     """
+ *     Used to set the groups for the Volume and Dollar bars.
  */
-  __pyx_tuple_ = PyTuple_Pack(5, __pyx_n_s_units, __pyx_n_s_data, __pyx_n_s_threshold, __pyx_n_s_g_count, __pyx_n_s_i); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(5, __pyx_n_s_units, __pyx_n_s_data, __pyx_n_s_threshold, __pyx_n_s_g_count, __pyx_n_s_i); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_loops_pyx, __pyx_n_s_set_row_groups, 2, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_loops_pyx, __pyx_n_s_set_row_groups, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1368,9 +1372,9 @@ static int __Pyx_InitCachedConstants(void) {
 }
 
 static int __Pyx_InitGlobals(void) {
-  if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 2, __pyx_L1_error);
-  __pyx_int_9 = PyInt_FromLong(9); if (unlikely(!__pyx_int_9)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_int_9 = PyInt_FromLong(9); if (unlikely(!__pyx_int_9)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1531,27 +1535,27 @@ if (!__Pyx_RefNanny) {
 }
 #endif
   __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_cython_loops(void)", 0);
-  if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_empty_unicode = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_unicode)) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_empty_unicode = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_unicode)) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pyx_CyFunction_USED
-  if (__pyx_CyFunction_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_CyFunction_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_FusedFunction_USED
-  if (__pyx_FusedFunction_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_FusedFunction_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_Coroutine_USED
-  if (__pyx_Coroutine_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_Coroutine_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_Generator_USED
-  if (__pyx_Generator_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_Generator_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_AsyncGen_USED
-  if (__pyx_AsyncGen_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_AsyncGen_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_StopAsyncIteration_USED
-  if (__pyx_StopAsyncIteration_init() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_StopAsyncIteration_init() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   /*--- Library function declarations ---*/
   /*--- Threads initialization code ---*/
@@ -1570,36 +1574,36 @@ if (!__Pyx_RefNanny) {
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
-  if (unlikely(!__pyx_m)) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (unlikely(!__pyx_m)) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  __pyx_d = PyModule_GetDict(__pyx_m); if (unlikely(!__pyx_d)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_d = PyModule_GetDict(__pyx_m); if (unlikely(!__pyx_d)) __PYX_ERR(0, 1, __pyx_L1_error)
   Py_INCREF(__pyx_d);
-  __pyx_b = PyImport_AddModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_b)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_cython_runtime = PyImport_AddModule((char *) "cython_runtime"); if (unlikely(!__pyx_cython_runtime)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_b = PyImport_AddModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_b)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_cython_runtime = PyImport_AddModule((char *) "cython_runtime"); if (unlikely(!__pyx_cython_runtime)) __PYX_ERR(0, 1, __pyx_L1_error)
   #if CYTHON_COMPILING_IN_PYPY
   Py_INCREF(__pyx_b);
   #endif
-  if (PyObject_SetAttrString(__pyx_m, "__builtins__", __pyx_b) < 0) __PYX_ERR(0, 2, __pyx_L1_error);
+  if (PyObject_SetAttrString(__pyx_m, "__builtins__", __pyx_b) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   /*--- Initialize various global constants etc. ---*/
-  if (__Pyx_InitGlobals() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_InitGlobals() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
-  if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   if (__pyx_module_is_main_cython_loops) {
-    if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
-    PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 2, __pyx_L1_error)
+    PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
     if (!PyDict_GetItemString(modules, "cython_loops")) {
-      if (unlikely(PyDict_SetItemString(modules, "cython_loops", __pyx_m) < 0)) __PYX_ERR(0, 2, __pyx_L1_error)
+      if (unlikely(PyDict_SetItemString(modules, "cython_loops", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
   /*--- Builtin init code ---*/
-  if (__Pyx_InitCachedBuiltins() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_InitCachedBuiltins() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   /*--- Constants init code ---*/
-  if (__Pyx_InitCachedConstants() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_InitCachedConstants() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   /*--- Global type/function init code ---*/
   (void)__Pyx_modinit_global_init_code();
   (void)__Pyx_modinit_variable_export_code();
@@ -1610,22 +1614,29 @@ if (!__Pyx_RefNanny) {
   (void)__Pyx_modinit_function_import_code();
   /*--- Execution code ---*/
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
-  if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cython_loops.pyx":2
+  /* "cython_loops.pyx":8
+ * # Terminal: python setup.py build_ext --inplace
  * 
  * def set_row_groups(int units, data):             # <<<<<<<<<<<<<<
- * 
- *     cdef long threshold = units
+ *     """
+ *     Used to set the groups for the Volume and Dollar bars.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12cython_loops_1set_row_groups, NULL, __pyx_n_s_cython_loops); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12cython_loops_1set_row_groups, NULL, __pyx_n_s_cython_loops); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_row_groups, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_row_groups, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+
+  /* "cython_loops.pyx":1
+ * # Author: Jacques Joubert             # <<<<<<<<<<<<<<
+ * # Email: jacques@quantsportal.com
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /*--- Wrapped vars code ---*/

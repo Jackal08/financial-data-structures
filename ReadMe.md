@@ -21,8 +21,6 @@ to build the more interesting features for predicting financial time series data
 A great paper to read more about how the tick, volume, and dollar bars have better statistical properties to standard time sampled data is:
 [The Volume Clock: Insights into the high frequency paradigm, Lopez de Prado, et al](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2034858)
 
-Note: Please make sure you unzip the ES_Trades.csv.zip found in raw_tick_data, it was too big to upload without zipping it first.
-
 ## Why Using Different Sampling Techniques is Cool!
 The whole motivation behind sampling data differently to the traditional fixed time intervals, is that alternative methods offer better statistical properties.
 
@@ -92,6 +90,8 @@ From Terminal:
 
 You need to compile the cython module locally. cd into the working dir and in the terminal type: python setup.py build_ext --inplace
 
+**Note:** Please make sure you unzip the ES_Trades.csv.zip found in raw_tick_data, it was too big to upload without zipping it first.
+
 ## Installation on Ubuntu Linux
 
 Make sure you install the latest version of the Anaconda 3 distribution which must include an IDE like Spyder.
@@ -112,6 +112,7 @@ From Terminal:
 
 You need to compile the cython module locally. cd into the working dir and in the terminal type: python setup.py build_ext --inplace
 
+**Note:** Please make sure you unzip the ES_Trades.csv.zip found in raw_tick_data, it was too big to upload without zipping it first.
 
 ## Installation on Windows
 
@@ -129,6 +130,8 @@ You can always use a virtualbox machine on Windows.
 The reason for this is because Windows doesn't lend itself well to python and cython. You need to wrestle a bear and then crawl on broken glass whilst humming Mozart's piano sonata no 13 in B flat major. Honestly, just install Linux. 
 
 The following link is more useful for those pursuing the heroes journey: [How to deal with the pain of “unable to find vcvarsall.bat”](https://blogs.msdn.microsoft.com/pythonengineering/2016/04/11/unable-to-find-vcvarsall-bat/)
+
+**Note:** Please make sure you unzip the ES_Trades.csv.zip found in raw_tick_data, it was too big to upload without zipping it first.
 
 ## Packages Used
 Packages can all be installed by running the following command in the terminal (project working directory): "pip install -r pip_requirements.txt" 

@@ -157,13 +157,14 @@ if __name__ == '__main__':
     data = pd.read_csv('raw_tick_data/ES_Trades.csv')
 
     # Create bars
+    print('Uncomment time_bars in main.py if you want them to be created.')
     # time_bars = create_bars(data, units=600, type='time')  # Time bars take long to run since I have not optimised them.
     tick_bars = create_bars(data, units=5000, type='tick')
     volume_bars = create_bars(data, units=21731, type='volume')
     dollar_bars = create_bars(data, units=35638840, type='dollar')
 
     # Write to csv
-    # time_bars.to_csv('saved_data/time_bars.csv', index=False)
+    #time_bars.to_csv('saved_data/time_bars.csv', index=False)
     tick_bars.to_csv('saved_data/tick_bars.csv', index=False)
     volume_bars.to_csv('saved_data/volume_bars.csv', index=False)
     dollar_bars.to_csv('saved_data/dollar_bars.csv', index=False)

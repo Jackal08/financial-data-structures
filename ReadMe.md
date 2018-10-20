@@ -89,6 +89,7 @@ From Terminal:
 
 ### Troubleshoot:
 **error: no module named cython_loops**
+
 You need to compile the cython module locally. cd into the working dir and in the terminal type: python setup.py build_ext --inplace
 
 ## Installation on Ubuntu Linux
@@ -105,6 +106,12 @@ From Terminal:
 1. Go to the directory where you have saved the file, example: cd Desktop/bars/awesome/
 2. pip install -r pip_requirements.txt
 3. Run the file: main.py (python main.py)
+
+### Troubleshoot:
+**error: no module named cython_loops**
+
+You need to compile the cython module locally. cd into the working dir and in the terminal type: python setup.py build_ext --inplace
+
 
 ## Installation on Windows
 

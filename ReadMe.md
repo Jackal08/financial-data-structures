@@ -87,6 +87,10 @@ From Terminal:
 2. pip install -r pip_requirements.txt
 3. Run the file: main.py (python main.py)
 
+### Troubleshoot:
+**error: no module named cython_loops**
+You need to compile the cython module locally. cd into the working dir and in the terminal type: python setup.py build_ext --inplace
+
 ## Installation on Ubuntu Linux
 
 Make sure you install the latest version of the Anaconda 3 distribution which must include an IDE like Spyder.

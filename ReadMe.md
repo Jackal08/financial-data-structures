@@ -8,6 +8,15 @@ Version of Pycharm Professional Edition: 2017.3
 
 Version of Python: 3.6.5
 
+## Note: New Package
+Please note that the functionality for creating the standard bar types (dollar, volume, and tick) have been improved on and added to our new package called mlfinlab. A link to the repo follows: [mlfinlab on github](https://github.com/hudson-and-thames/mlfinlab)
+
+A link to oue group and public project board follows:
+* [Hudson & Thames Group: Advances in Financial Machine Learning](https://github.com/hudson-and-thames)
+* [Project Board](https://github.com/orgs/hudson-and-thames/projects/1)
+
+The new package is faster, easier to use, and will in the near future be available on the PyPi index. If you want a small sample of dollar bars, please email me. This package will include all the work from Advances in Financial Machine Learning. We welcome contributions to the project!
+
 ## Description
 
 This program is to help users create structured financial data from unstructured data, in the form of time, tick, volume, and dollar bars.

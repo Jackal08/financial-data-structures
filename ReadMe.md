@@ -13,7 +13,7 @@ Please note that the functionality for creating the standard bar types (dollar, 
 
 A link to our group and public project board follows:
 * [Hudson & Thames Group: Advances in Financial Machine Learning](https://github.com/hudson-and-thames)
-* [Project Board](https://github.com/orgs/hudson-and-thames/projects/1)
+* [Project Board](https://github.com/orgs/hudson-and-thames/projects)
 
 The new package is faster, easier to use, and will in the near future be available on the PyPi index. If you want a small sample of dollar bars, please email me. This package will include all the work from Advances in Financial Machine Learning. We welcome contributions to the project!
 
